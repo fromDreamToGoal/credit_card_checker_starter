@@ -43,6 +43,17 @@ function validateCred (cardNumber) {
     return sum % 10 === 0;
 }
 
-  console.log(validateCred(invalid1));
+function findInvalidCards (cards) {
+    const invalidCards = [];
+    for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        if (!validateCred(card)) {
+            invalidCards.push(card)
+        }
+    }
+    return invalidCards;
+}
+
+  console.log(findInvalidCards(batch));
 
 
