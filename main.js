@@ -25,11 +25,24 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 // Add your functions below:
 
+function validateCred (cardNumber) {
+    const reversedCardNumber = cardNumber.slice().reverse();
+    let sum = 0;
 
+    for (let i = 0; i < reversedCardNumber.length; i++) {
+        let cardDigit = reversedCardNumber[i];
+        cardDigit = parseInt(cardDigit, 10);
+        if (i % 2 === 1) {
+            cardDigit *= 2;
+            if (cardDigit > 9) {
+                cardDigit -= 9;
+            }
+        }
+        sum += cardDigit;
+    }
+    return sum % 10 === 0;
+}
 
-
-
-
-
+  console.log(validateCred(invalid1));
 
 
