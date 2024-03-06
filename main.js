@@ -54,6 +54,42 @@ function findInvalidCards (cards) {
     return invalidCards;
 }
 
-  console.log(findInvalidCards(batch));
+function idInvalidCardCompanies(invalidCards) {
+    const companies = [];
+
+    for (let i = 0; i < invalidCards.length; i++) {
+        const firstDigit = invalidCards[i][0];
+
+        switch (firstDigit) {
+            case 3:
+                if (!companies.includes('Amex')) {
+                    companies.push('Amex');
+                }
+                break;
+            case 4:
+                if (!companies.includes('Visa')) {
+                    companies.push('Visa');
+                }
+                break;
+            case 5:
+                if (!companies.includes('Mastercard')) {
+                    companies.push('Mastercard');
+                }
+                break;
+            case 6:
+                if (!companies.includes('Discover')) {
+                    companies.push('Discover');
+                }
+                break;
+            default:
+                console.log('Company not found for card: ', invalidCards[i]);
+        }
+    }
+    return companies;
+}
+
+const invalidCards = findInvalidCards(batch);
+
+  console.log(idInvalidCardCompanies(invalidCards));
 
 
